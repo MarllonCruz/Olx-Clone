@@ -47,36 +47,54 @@ const fetchGet = async (endpoint, body = []) => {
     return json;
 }
 
-const OlxAPI = {
+const OlxAPI = () => {
+    const api = {
 
-    login:async (email, password) => {
-        const json = await fetchPost(
-            '/user/signin',
-            {email, password}
-        );
-        return json;
-    },
-    register:async (name, email, password, stateLoc) => {
-        const json = await fetchPost(
-            '/user/signup',
-            {name, email, password, state:stateLoc}
-        );
-        return json;
-    },
-
-    getStates:async () => {
-        const json = await fetchGet(
-            '/states'
-        );
-        return json.states;
-    },
-    getGategories:async () => {
-        const json = await fetchGet(
-            '/categories'  
-        );
-        return json.categories
-    }
+        login:async (email, password) => {
+            const json = await fetchPost(
+                '/user/signin',
+                {email, password}
+            );
+            return json;
+        },
+        register:async (name, email, password, stateLoc) => {
+            const json = await fetchPost(
+                '/user/signup',
+                {name, email, password, state:stateLoc}
+            );
+            return json;
+        },
     
-};
+        getStates:async () => {
+            const json = await fetchGet(
+                '/states'
+            );
+            return json.states;
+        },
+        getGategories:async () => {
+            const json = await fetchGet(
+                '/categories'  
+            );
+            return json.categories
+        },
+        getAds:async (options) => {
+            const json = await fetchGet(
+                '/ad/list',
+                options
+            );
+            return json;
+        },
+        getAd:async (id, other = false) => {
+            const json = await fetchGet(
+                '/ad/item',
+                {id, other}
+            );
+            return json;
+        }
+        
+    };
+    return api;
+}
 
-export default () => OlxAPI;
+
+export default (OlxAPI);
