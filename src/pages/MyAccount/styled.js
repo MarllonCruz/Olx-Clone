@@ -9,6 +9,7 @@ form {
     border-radius: 3px;
     padding: 10px;
     box-shadow: 0px 0px 3px #999;
+    
 
     .area {
         display: flex;
@@ -41,11 +42,6 @@ form {
                     color: #333;
                 }
             }
-
-            textarea {
-                height: 150px;
-                resize: none;
-            }
             
             button {
                 background-color: #0089FF;
@@ -63,11 +59,49 @@ form {
             }
         }
 
-        .area--input-check {
-            input {
-                float: left;
+    
+    }
+}
+
+.list-ads {
+    background-color: #FFF;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: 0px 0px 3px #999;
+    display: flex;
+    flex-wrap: wrap;
+
+    .ad--box {
+        width: 25%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding-right: 20px;
+        margin-bottom: 10px;
+        align-items: center;
+
+        img {
+            max-width: 100%;
+        }
+        p {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        button {
+            border: none;
+            background: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            &:hover {
+                background: #0089FF;
+                color: #FFF;
             }
         }
+        
     }
 }
 

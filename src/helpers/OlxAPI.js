@@ -3,6 +3,48 @@ import qs from 'qs';
 
 const BASEAPI = 'http://alunos.b7web.com.br:501';
 
+const fetchPut = async (endpoint, body) => {
+    if(!body.token) {
+        let token = Cookies.get('token');
+        if(token) {
+            body.append('token', token);
+        }
+    }
+
+    const res = await fetch(BASEAPI+endpoint, {
+        method: 'PUT', 
+        body
+    });
+    const json = await res.json();
+
+    if(json.notallowed) {
+        window.location.href = '/signin';
+        return;
+    }
+
+    return json;
+}
+const fetchFile = async (endpoint, body) => {
+    if(!body.token) {
+        let token = Cookies.get('token');
+        if(token) {
+            body.append('token', token);
+        }
+    }
+
+    const res = await fetch(BASEAPI+endpoint, {
+        method: 'POST', 
+        body
+    });
+    const json = await res.json();
+
+    if(json.notallowed) {
+        window.location.href = '/signin';
+        return;
+    }
+
+    return json;
+}
 const fetchPost = async (endpoint, body) => {
     if(!body.token) {
         let token = Cookies.get('token');
@@ -88,6 +130,35 @@ const OlxAPI = () => {
             const json = await fetchGet(
                 '/ad/item',
                 {id, other}
+            );
+            return json;
+        },
+        addAd:async (fData) => {
+            const json = await fetchFile(
+                '/ad/add',
+                fData
+            );
+            return json;
+        },
+        getInfo:async () => {
+            const json = await fetchGet(
+                '/user/me'  
+            );
+            return json;
+        },
+        editUser:async (fData) => {
+            const json = await fetchPut(
+                '/user/me',
+                fData
+            );
+            return json;
+        },
+        editAd:async (id, status, title, category, price, priceNegotiable, desc, images, img) => {
+            const json = await fetchPost(
+                '/ad/'+id,
+                {status, title, category, 
+                price, priceNegotiable, description:desc, 
+                images, img}
             );
             return json;
         }

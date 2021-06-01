@@ -35,7 +35,7 @@ const Page = () => {
 
         return `${cDay} de ${months[cMonth]} de ${cYear}`;
     }
-    
+
     return (
         <PageContainer>
             {adInfo.category &&

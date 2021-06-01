@@ -109,6 +109,35 @@ margin-top: 20px;
         margin-top: 10px;
     }
 }
+
+@media (max-width: 600px) {
+    & {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        margin: 0;
+
+        .box {
+            flex-direction: column;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+        .adImage {
+            width: 100%;
+        }
+        .adInfo {
+            .adName {
+                padding-left: 10px;
+            }
+            
+        }
+    }
+    
+    .rightSide {
+        width: 100%;
+    }
+}
 `;
 
 export const OthersArea = styled.div`
@@ -126,6 +155,27 @@ h2 {
     }
 }
 
+@media (max-width: 600px) {
+    h2 {
+        padding-left: 10px;
+    }
+
+    .list {
+    
+        .aditem {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .list {
+    
+        .aditem {
+            width: 100%;
+        }
+    }
+}
 `;
 
 export const BreadCrumb = styled.div`

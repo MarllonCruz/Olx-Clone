@@ -33,7 +33,7 @@ const Page = () => {
         const getRecentAds = async () => {
             const json = await api.getAds({
                 sort:'desc',
-                limit:20
+                limit:15
             });
             setAdList(json.ads);
         }
