@@ -66,4 +66,14 @@ form {
     }
 }
 
+@media (max-width: 600px) {
+    form {
+        .area {
+            .area--title {
+                width: 110px;
+            }
+        }
+    }
+}
+
 `;
